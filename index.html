@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>بالميثاق نبلغ الآفاق — مذكرة الرياضيات</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f0e8;--ink:#3a0f1c;--maroon:#6d1a2e;--maroon2:#4a0f20;--gold:#b8893a;--gold2:#e3c07a;--card:#fffaf2;--sub:#6b5560;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a0b11;--ink:#f6e9d3;--card:#2a1119;--sub:#c9b4a8}}
+:root[data-theme="dark"]{--bg:#1a0b11;--ink:#f6e9d3;--card:#2a1119;--sub:#c9b4a8}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo',Tahoma,Arial,sans-serif;line-height:1.6}
+header{text-align:center;padding:34px 16px 18px}
+.slogan{font-size:clamp(30px,8vw,56px);font-weight:900;margin:0;color:var(--maroon);letter-spacing:0;
+text-shadow:0 1px 0 var(--gold2),0 2px 0 var(--gold),0 3px 0 #8a6224,0 4px 0 #6b4a18,0 10px 14px rgba(0,0,0,.3)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .slogan{color:var(--gold2)}}
+:root[data-theme="dark"] .slogan{color:var(--gold2)}
+.meta{margin:14px 0 0;font-weight:700;font-size:16px}
+.meta span{display:block;color:var(--sub);font-weight:500;font-size:14px}
+h2{margin:30px 16px 6px;font-size:22px;font-weight:900;color:var(--maroon)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) h2{color:var(--gold2)}}
+:root[data-theme="dark"] h2{color:var(--gold2)}
+.hint{margin:0 16px 4px;color:var(--sub);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;padding:14px 16px;max-width:1000px;margin:0 auto}
+.card{perspective:700px;height:130px;cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none}
+.tilt{width:100%;height:100%;position:relative;transform-style:preserve-3d;
+transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .15s ease-out}
+.card.rest .tilt{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.flip{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.3,1.3,.5,1)}
+.card.on .flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+display:flex;align-items:center;gap:12px;padding:14px 16px;overflow:hidden;
+box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 14px 24px -8px rgba(60,10,25,.5),0 28px 40px -20px rgba(60,10,25,.45)}
+.front{background:linear-gradient(135deg,var(--maroon),var(--maroon2));color:#fff6e4;border:1px solid var(--gold)}
+.back{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#3a0f1c;transform:rotateY(180deg);flex-direction:column;justify-content:center;text-align:center;direction:ltr}
+.n{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:20px;
+background:linear-gradient(145deg,var(--gold2),var(--gold));color:var(--maroon2);transform:translateZ(40px);box-shadow:0 6px 10px rgba(0,0,0,.4)}
+.t{font-weight:700;font-size:17px;line-height:1.4;transform:translateZ(26px);text-shadow:0 2px 4px rgba(0,0,0,.4)}
+.back b{font-size:15px;transform:translateZ(20px)}
+.back small{font-size:12px;opacity:.8;margin-top:4px}
+.glare{position:absolute;inset:0;pointer-events:none;border-radius:16px;
+background:radial-gradient(circle at var(--gx,50%) var(--gy,0%),rgba(255,255,255,.35),transparent 55%);opacity:var(--go,0);transition:opacity .2s}
+.card:focus-visible .front{outline:3px solid var(--gold2);outline-offset:3px}
+footer{text-align:center;padding:26px 16px 40px;color:var(--sub);font-size:14px}
+footer b{display:block;color:var(--ink);font-size:16px}
+@media (prefers-reduced-motion:reduce){.tilt,.flip{transition:none}}
+.ov{position:fixed;inset:0;z-index:9;background:var(--bg);overflow:auto;display:none;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.ov.show{display:block;animation:in .4s cubic-bezier(.2,.9,.3,1)}
+@keyframes in{from{opacity:0;transform:perspective(700px) rotateX(18deg) scale(.92)}}
+.bar{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(135deg,var(--maroon),var(--maroon2));color:#fff6e4;position:sticky;top:0;z-index:2}
+.bar b{display:block;font-size:18px}.bar small{display:block;color:var(--gold2);font-size:12px}
+.x{border:0;border-radius:50%;width:38px;height:38px;font-size:18px;background:var(--gold2);color:var(--maroon2);cursor:pointer}
+.tabs{display:flex;gap:8px;padding:12px 16px;max-width:760px;margin:0 auto}
+.tabs button{flex:1;padding:10px 4px;border:1px solid var(--gold);border-radius:12px;background:var(--card);color:var(--ink);font:700 14px Cairo,Tahoma,sans-serif;cursor:pointer}
+.tabs button.on{background:var(--maroon);color:#fff6e4;box-shadow:0 6px 12px -4px rgba(60,10,25,.5)}
+.body{max-width:760px;margin:0 auto;padding:0 16px 40px}
+.ex{background:var(--card);border:1px solid var(--gold);border-radius:14px;padding:12px 14px;margin:0 0 14px;box-shadow:0 10px 18px -10px rgba(60,10,25,.45)}
+.ex h3{margin:0 0 6px;font-size:16px;color:var(--maroon)}.ex h4{margin:10px 0 4px;font-size:14px;color:var(--gold)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ex h3{color:var(--gold2)}}
+:root[data-theme="dark"] .ex h3{color:var(--gold2)}
+.m{direction:ltr;unicode-bidi:isolate;text-align:left;font-size:18px;white-space:pre-line;font-family:'Cambria Math','Times New Roman',serif;display:block;overflow-x:auto}
+.sol{background:rgba(184,137,58,.15);border-radius:8px;padding:8px 10px}
+summary{cursor:pointer;font-weight:700}summary .m{margin-top:6px}details .sol{margin-top:8px}
+.opt{display:block;width:100%;margin:8px 0;padding:10px 12px;border:1px solid var(--gold);border-radius:10px;background:var(--bg);color:var(--ink);cursor:pointer}
+.opt.ok{background:#1f7a3d;color:#fff}.opt.bad{background:#a32a2a;color:#fff}.fb{font-weight:700;min-height:1.5em}
+.nmb{position:fixed;inset:0;z-index:20;background:rgba(40,8,18,.88);display:grid;place-items:center;padding:20px}
+.nmb[hidden]{display:none}.nmb div{background:var(--card);border:2px solid var(--gold);border-radius:18px;padding:22px;max-width:360px;width:100%;text-align:center}
+.nmb input{width:100%;padding:12px;font:700 18px Cairo,Tahoma,sans-serif;border-radius:10px;border:1px solid var(--gold);margin:12px 0;text-align:center;background:var(--bg);color:var(--ink)}
+.nmb button,.tbn{padding:10px 22px;border:0;border-radius:12px;background:var(--maroon);color:#fff6e4;font:700 16px Cairo,Tahoma,sans-serif;cursor:pointer}
+.tbn{margin-top:10px}.tbn[hidden]{display:none}
+.tt{width:100%;border-collapse:collapse;font-size:14px}.tt th{background:var(--maroon);color:#fff6e4;padding:8px}.tt td{padding:8px;border-bottom:1px solid var(--gold);text-align:center}
+.ev{padding:6px 0;border-bottom:1px dashed var(--gold);font-size:14px}.fb{font-weight:700;min-height:1.5em}
+.nav{display:flex;gap:8px;justify-content:center;padding:10px 16px;position:sticky;top:0;z-index:5;background:var(--bg);padding-top:calc(10px + env(safe-area-inset-top,0px))}
+.nav button{padding:8px 18px;border:1px solid var(--gold);border-radius:12px;background:var(--card);color:var(--ink);font:700 15px Cairo,Tahoma,sans-serif;cursor:pointer}
+.nav button.on{background:var(--maroon);color:#fff6e4}
+#tp{display:none;max-width:900px;margin:0 auto;padding:10px 16px 40px}body.tm #tp{display:block}
+body.tm header,body.tm h2,body.tm .hint,body.tm .grid,body.tm footer{display:none}
+.hl{margin:12px auto;padding:8px 18px;max-width:94%;width:fit-content;border-radius:16px;color:#fff;font-weight:900;font-size:clamp(22px,6.4vw,40px);line-height:1.4;
+text-shadow:0 2px 4px rgba(0,0,0,.35);box-shadow:0 5px 0 rgba(0,0,0,.25),0 14px 22px -8px rgba(0,0,0,.45)}
+.c1{background:linear-gradient(135deg,#e91e63,#ff5a8a)}.c2{background:linear-gradient(135deg,#00a389,#2fd1a8)}
+.c3{background:linear-gradient(135deg,#6a3fd1,#9b6cff)}.c4{background:linear-gradient(135deg,#f26a00,#ffb300)}
+.nmb .lk{background:none;color:var(--sub);text-decoration:underline;font-size:14px;margin-top:6px;padding:4px}
+.dl{border:0;background:none;font-size:18px;cursor:pointer}
+.hero{text-align:center;padding:26px 14px 10px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.hero div,.hero h1{margin:0;color:#fff;font-weight:900;border-radius:18px;padding:6px 22px;max-width:100%;text-shadow:0 2px 6px rgba(0,0,0,.35);box-shadow:0 10px 18px -8px rgba(0,0,0,.45)}
+.hero h1{font-size:clamp(34px,9.5vw,68px);background:linear-gradient(135deg,#ff9f1c,#ff3d6e,#c026d3);padding:8px 28px;border-radius:24px}
+.h2a{font-size:clamp(24px,7vw,42px);background:linear-gradient(135deg,#ff7a00,#ff2d6f)}
+.h3a{font-size:clamp(22px,6vw,36px);background:linear-gradient(135deg,#00b3a4,#0077c8)}
+.h4a{font-size:clamp(20px,5.4vw,32px);background:linear-gradient(135deg,#7b2ff7,#c026d3)}
+.h5a{font-size:clamp(24px,7vw,42px);background:linear-gradient(135deg,#f59e0b,#ef4444)}
+.card.ex1 .front{background:linear-gradient(135deg,#16a34a,#065f46);border-color:#bbf7d0}
+.card.ex2 .front{background:linear-gradient(135deg,#f59e0b,#b45309);border-color:#fde68a}
+.card.ex3 .front{background:linear-gradient(135deg,#9333ea,#4c1d95);border-color:#e9d5ff}
+.card.lk{filter:grayscale(.65);opacity:.75}.card.dn .front{box-shadow:0 0 0 3px #4ade80,0 14px 24px -8px rgba(60,10,25,.5)}
+.bd{position:absolute;top:8px;left:12px;font-size:20px;font-weight:900;transform:translateZ(40px)}
+.opt.sel{background:var(--gold2);color:#3a0f1c;font-weight:700}.wn{background:#b91c1c;color:#fff;font-weight:700;text-align:center}.wn:empty{display:none}.wn{padding:8px}
+#ov,.nmb{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}#ni{-webkit-user-select:text;user-select:text}
+.th{color:var(--maroon);margin:18px 0 6px}.sc{overflow-x:auto}.tt th,.tt td{white-space:nowrap}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .th{color:var(--gold2)}}
+@media print{body>*:not(#tp){display:none!important}#tp{display:block!important;padding:0}.noprint{display:none!important}.tt{font-size:9px}.tt th,.tt td{padding:3px}@page{size:landscape;margin:10mm}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+<nav class="nav"><button id="n1" class="on" onclick="go(0)">📚 الدروس</button><button id="n2" onclick="go(1)">👨‍🏫 المعلم: الأستاذ إسماعيل</button></nav><section id="tp"></section>
+<header class="hero"><h1>بالميثاق نبلغ الآفاق</h1><div class="h2a">الصف العاشر : المادة رياضيات</div><div class="h3a">مدرسة راشد بن سعيد الحلقة 3</div><div class="h4a">مدير المدرسة : الأستاذ عبدالله الهنجري</div><div class="h5a">إعداد الأستاذ إسماعيل</div></header>
+<h2>الوحدة 1: التعابير والمعادلات التربيعية</h2>
+<p class="hint">اضغط على أي بطاقة لفتح الدرس: أمثلة محلولة، تمارين، واختبار.</p>
+<div class="grid" id="u1"></div>
+<h2>الوحدة 2: الأسس والتعابير الجذرية</h2>
+<div class="grid" id="u2"></div>
+<div style="text-align:center"><span id="hi" style="display:block;color:var(--sub);font-size:14px"></span></div><footer><b>إعداد الأستاذ إسماعيل الشحات</b>مدير المدرسة: الأستاذ عبدالله الهنجري</footer>
+<div class="nmb" id="nm" hidden><div><b style="font-size:20px">أهلاً بك 👋</b><p>اكتب اسمك الكامل كما سجّله المعلم</p><input id="ni" maxlength="40" placeholder="اسم الطالب"><p id="ne" style="color:#a32a2a;font-weight:700;min-height:1.4em;margin:0"></p><button onclick="saveName()">دخول</button><p id="ne" class="fb" style="color:#c0392b"></p><a href="#" onclick="go(1);return false" style="font-size:13px;color:var(--sub)">دخول المعلم</a><br><button class="lk" onclick="document.getElementById('nm').hidden=true;go(1)">دخول المعلم</button></div></div><div class="ov" id="ov" role="dialog" aria-modal="true"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+var D=[
+[[["(2x²+5x−7)+(3−4x²+6x)","(2−4)x² + (5+6)x + (−7+3)\n= −2x² + 11x − 4"],["(3−2x+2x²)−(4x−5+3x²)","3−2x+2x²−4x+5−3x²\n= −x² − 6x + 8"]],[["(6x³−4)+(−2x³+9)","4x³ + 5"],["(g³−2g²+5g+6)−(g²+2g)","g³ − 3g² + 3g + 6"]],["ناتج (8y−4y²)+(3y−9y²)","−13y²+11y","−5y²+11y","13y²+11y"]],
+[[["−3x²(7x²−x+4)","−21x⁴ + 3x³ − 12x²"],["2p(−4p²+5p)−5(2p²+20)","−8p³+10p²−10p²−100\n= −8p³ − 100"]],[["5a²(−4a²+2a−7)","−20a⁴ + 10a³ − 35a²"],["t(2t+3)+20 = 2t(t−3)","2t²+3t+20 = 2t²−6t\n9t = −20 ⇒ t = −20/9"]],["ناتج 5w(−3w²+2w−4)","−15w³+10w²−20w","−15w³+2w−4","15w³+10w²−20w"]],
+[[["(2x+3)(x+5)","2x²+10x+3x+15\n= 2x² + 13x + 15"],["(x−2)(3x+4)","3x²+4x−6x−8\n= 3x² − 2x − 8"]],[["(3m+4)(m+5)","3m² + 19m + 20"],["(6x+5)(2x²−3x−5)","12x³−18x²−30x+10x²−15x−25\n= 12x³ − 8x² − 45x − 25"]],["ناتج (x+5)(x+2)","x²+7x+10","x²+10","x²+7x+7"]],
+[[["(3x+5)²","9x² + 30x + 25"],["(2x²+3)(2x²−3)","4x⁴ − 9"]],[["(2x−5y)²","4x² − 20xy + 25y²"],["(4c−7d)(4c+7d)","16c² − 49d²"]],["ناتج (11−a)²","121−22a+a²","121−a²","121+a²"]],
+[[["27y²+18y","9y(3y+2)"],["4qr+8r+3q+6","4r(q+2)+3(q+2)\n= (4r+3)(q+2)"]],[["15w−3v","3(5w−v)"],["c² = 3c","c(c−3)=0 ⇒ c=0 أو c=3"]],["حل (2d+6)(3d−15)=0","d=−3 أو d=5","d=3 أو d=−5","d=−6 أو d=15"]],
+[[["x²+9x+20","(x+4)(x+5)"],["z²−3z=70","z²−3z−70=0\n(z−10)(z+7)=0 ⇒ z=10 أو z=−7"]],[["d²+11d+24","(d+3)(d+8)"],["x²+3x−18=0","(x+6)(x−3)=0 ⇒ x=−6 أو x=3"]],["حلّل r²−2r−24","(r−6)(r+4)","(r+6)(r−4)","(r−8)(r+3)"]],
+[[["5x²−13x+6","5x²−10x−3x+6\n= 5x(x−2)−3(x−2)\n= (5x−3)(x−2)"],["5x²+13x+6","5x²+10x+3x+6\n= (5x+3)(x+2)"]],[["6x²+22x−8","2(3x²+11x−4) = 2(3x−1)(x+4)"],["2n²−n−1","(2n+1)(n−1)"]],["حلّل 4r²−r+7","أولية (لا تتحلل)","(2r−1)(2r+7)","(4r+1)(r−7)"]],
+[[["64g²−h²","(8g−h)(8g+h)"],["18x³=50x","2x(3x−5)(3x+5)=0\nx=0 أو x=±5/3"]],[["2y⁴−50","2(y²−5)(y²+5)"],["9x³−4x","x(3x−2)(3x+2)"]],["حلّل x²−9","(x−3)(x+3)","(x−3)²","(x+9)(x−1)"]],
+[[["9y²+24y+16","(3y)²+2(3y)(4)+4² = (3y+4)²"],["a²+12a+36=0","(a+6)²=0 ⇒ a=−6"]],[["16x²−56x+49","(4x−7)²"],["(z+3)²=26","z+3=±√26 ⇒ z=−3±√26"]],["حلّل 25x²+60x+36","(5x+6)²","(5x−6)²","(25x+36)²"]],
+[[["(6n³)(2n⁷)","12n¹⁰"],["(3xy⁴)²[(−2y)²]³","9x²y⁸·(4y²)³ = 9x²y⁸·64y⁶\n= 576x²y¹⁴"]],[["(3y⁴)(7y⁵)","21y⁹"],["(−3p⁵t⁶)⁴","81p²⁰t²⁴"]],["قيمة [(3²)²]²","3⁸","3⁶","3⁴"]],
+[[["g³h⁵ / (gh²)","g²h³"],["(3p³/7)²","9p⁶/49"]],[["x³y⁴ / (x²y)","x y³"],["n⁻⁵p⁴ / r⁻²","p⁴r² / n⁵"]],["قيمة (−4n²q⁵r²/9n³q²r)⁰","1","0","−4/9"]],
+[[["125^(1/3)","∛125 = 5"],["64^(2/3)","(∛64)² = 4² = 16"]],[["36^(3/2)","(√36)³ = 6³ = 216"],["3^(3x+1)=81","3x+1=4 ⇒ x=1"]],["قيمة 8^(2/3)","4","16","2"]],
+[[["201,000,000","2.01 × 10⁸"],["(7×10⁵)(3.5×10⁻³)","24.5×10² = 2.45 × 10³ = 2450"]],[["0.0000725","7.25 × 10⁻⁵"],["(3.066×10⁸)/(7.3×10³)","0.42×10⁵ = 4.2 × 10⁴ = 42,000"]],["6.32×10⁹ بالصيغة القياسية","6,320,000,000","632,000,000","63,200,000,000"]],
+[[["√80","√(16·5) = 4√5"],["3 / (5+√2)","3(5−√2) / (25−2)\n= (15−3√2)/23"]],[["√54","√(9·6) = 3√6"],["√(6y) / √12","√(y/2) = √(2y)/2"]],["بسّط √180","6√5","5√6","36√5"]],
+[[["3√2−5√2+4√2","(3−5+4)√2 = 2√2"],["5√3(3√2−√3)","15√6 − 15"]],[["4√54+2√24","12√6+4√6 = 16√6"],["2√6·7√3","14√18 = 14·3√2 = 42√2"]],["بسّط √12−√3","√3","2√3","√9"]]
+];
+var X=[
+[[["(3y+y³−5)+(4y²−4y+2y³+8)","3y³ + 4y² − y + 3"],["(7p+4p³−8)−(3p²+2−9p)","4p³ − 3p² + 16p − 10"]],[["(4+2a²−2a)−(3a²−8a+7)","−a² + 6a − 3"],["(−4z³−2z+8)−(4z³+3z²−5)","−8z³ − 3z² − 2z + 13"]],[["ناتج (−3d²−8+2d)+(4d−12+d²)","−2d²+6d−20","−2d²+6d−6","−d²+3d−10"],["درجة كثيرة الحدود 6x³+4x+x+3","3","6","4"]]],
+[[["2a(5a−2)+3a(2a+6)+8 = a(4a+1)+2a(6a−4)+50","16a²+14a+8 = 16a²−7a+50\n21a = 42 ⇒ a = 2"],["2x(x+4)+7 = (x+8)+2x(x+1)+12","2x²+8x+7 = 2x²+3x+20\n5x = 13 ⇒ x = 13/5"]],[["6g²(3g³+4g²+10g−1)","18g⁵ + 24g⁴ + 60g³ − 6g²"],["d(d+3)−d(d−4) = 9d−16","7d = 9d−16 ⇒ d = 8"]],[["بسّط x(3x²+4)+2(7x−3)","3x³+18x−6","3x³+11x−6","3x³+18x+6"],["بسّط t(4t²+15t+4)−4(3t−1)","4t³+15t²−8t+4","4t³+15t²−8t−4","4t³+15t²+16t+4"]]],
+[[["(5y−2)(y+8)","5y²+40y−2y−16\n= 5y² + 38y − 16"],["(4n+3)(n+9)","4n²+36n+3n+27\n= 4n² + 39n + 27"]],[["(4a−5)(2a−9)","8a² − 46a + 45"],["(m²+2m−3)(4m²−7m+5)","= 4m⁴ + m³ − 21m² + 31m − 15"]],[["ناتج (2a+9)(5a−6)","10a²+33a−54","10a²−33a−54","10a²+57a−54"],["مساحة حوض 20×15 يحيط به ممر عرضه x","(20+2x)(15+2x) = 4x²+70x+300","4x²+35x+300","x²+70x+300"]]],
+[[["(8c+3d)²","64c² + 48cd + 9d²"],["(6p−1)²","36p² − 12p + 1"]],[["(a−2b)²","a² − 4ab + 4b²"],["(9t+6)(9t−6)","81t² − 36"]],[["ناتج (3n+2)(3n−2)","9n²−4","9n²+4","9n²−12n+4"],["ناتج (3x+4y)²","9x²+24xy+16y²","9x²+16y²","9x²+12xy+16y²"]]],
+[[["7u²t²+21ut²−ut","ut(7ut + 21t − 1)"],["rn+5n−r−5","n(r+5)−1(r+5) = (n−1)(r+5)"]],[["3np+15p−4n−20","3p(n+5)−4(n+5) = (3p−4)(n+5)"],["8b²−40b = 0","8b(b−5)=0 ⇒ b=0 أو b=5"]],[["حلّل np+2n+8p+16","(n+8)(p+2)","(n+2)(p+8)","(n+16)(p+1)"],["حل 3k(k+10)=0","k=0 أو k=−10","k=3 أو k=10","k=0 أو k=10"]]],
+[[["y²+13y−48","(y+16)(y−3)"],["w²−11w+28","(w−4)(w−7)"]],[["21−22m+m²","m²−22m+21 = (m−1)(m−21)"],["x²+12x = −32","x²+12x+32=0 ⇒ (x+4)(x+8)=0\nx=−4 أو x=−8"]],[["حل x²−4x−21=0","x=7 أو x=−3","x=−7 أو x=3","x=4 أو x=21"],["حلّل x²+14x+24","(x+2)(x+12)","(x+3)(x+8)","(x+4)(x+6)"]]],
+[[["10y²−35y+30","5(2y²−7y+6) = 5(2y−3)(y−2)"],["2x²+3x−5","2x²−2x+5x−5 = (2x+5)(x−1)"]],[["5x²+34x+24","5x²+30x+4x+24 = (5x+4)(x+6)"],["2x²+9x−18 = 0","(2x−3)(x+6)=0 ⇒ x=3/2 أو x=−6"]],[["حلّل 2x²+19x+24","(2x+3)(x+8)","(2x+8)(x+3)","(2x+1)(x+24)"],["حلّل 4x²−13x+10","(4x−5)(x−2)","(4x−2)(x−5)","(4x+5)(x+2)"]]],
+[[["81−c²","(9−c)(9+c)"],["4a²−25","(2a−5)(2a+5)"]],[["2p³−162p","2p(p−9)(p+9)"],["u⁴−81","(u²+9)(u−3)(u+3)"]],[["حلّل 9m²−144","9(m−4)(m+4)","9(m−12)(m+12)","9(m−4)²"],["حل y=x²−9/16 عندما y=0","x=3/4 أو x=−3/4","x=9/4 أو x=−9/4","x=9/16"]]],
+[[["81x²−90x+25","(9x)²−2(9x)(5)+5² = (9x−5)²"],["2a²+10a+25","ليس مربعاً كاملاً (2a² ليس مربعاً)"]],[["4m²−24m+36 = 0","4(m−3)²=0 ⇒ m=3"],["(y−4)² = 7","y−4=±√7 ⇒ y = 4±√7"]],[["حل (a−10)²=121","a=21 أو a=−1","a=11 أو a=−11","a=131 أو a=−111"],["هل x²+26x+168 مربع كامل؟","لا","نعم (x+13)²","نعم (x+12)²"]]],
+[[["(−4rx²t³)(−6r⁵x²t)","24r⁶x⁴t⁴"],["[(2²)²]⁴","2¹⁶ = 65,536"]],[["2q²(9q⁴)","18q⁶"],["(−2f²g³h²)³","−8f⁶g⁹h⁶"]],[["ناتج (5u⁴v)(7u⁴v³)","35u⁸v⁴","35u¹⁶v³","12u⁸v⁴"],["مساحة مربع طول ضلعه 3xy²","9x²y⁴","6xy²","9x²y²"]]],
+[[["(5x⁵y/6)²","25x¹⁰y² / 36"],["(4x³/5y⁴)³","64x⁹ / (125y¹²)"]],[["b⁴c²d⁰ / (b²c)","b²c"],["32a⁻⁸b³c⁻⁴ / (4a³b⁵c⁻²)","8a⁻¹¹b⁻²c⁻² = 8/(a¹¹b²c²)"]],[["(3/5)⁴ تساوي","81/625","12/20","81/5"],["قيمة 15⁰","1","0","15"]]],
+[[["1296^(1/4)","6 لأن 6⁴ = 1296"],["27^(2/3)","(∛27)² = 3² = 9"]],[["256^(5/4)","(⁴√256)⁵ = 4⁵ = 1024"],["12^(2x+3)=144","2x+3 = 2 ⇒ x = −1/2"]],[["قيمة 27^(1/3)","3","9","1/3"],["حل 6^x=216","x=3","x=36","x=2"]]],
+[[["0.000051","5.1 × 10⁻⁵"],["(6.5×10¹²)(8.7×10⁻¹⁵)","56.55×10⁻³ = 5.655×10⁻² = 0.05655"]],[["68,700,000,000","6.87 × 10¹⁰"],["(7.8×10⁻⁴)²","60.84×10⁻⁸ = 6.084×10⁻⁷\n= 0.0000006084"]],[["4×10⁻⁷ بالصيغة القياسية","0.0000004","0.00000004","4,000,000"],["(2.3958×10³)/(1.98×10⁸)","1.21×10⁻⁵","1.21×10⁵","12.1×10⁻⁵"]]],
+[[["√(32r²k⁴t⁵)","√(16·2·r²k⁴t⁴·t) = 4rk²t²√(2t)"],["√5·√10","√50 = 5√2"]],[["7/(3−√7)","7(3+√7)/(9−7) = 7(3+√7)/2"],["3/(2+√2)","3(2−√2)/(4−2) = 3(2−√2)/2"]],[["بسّط √6·√8","4√3","48","2√14"],["قيمة √(35/15)","√21/3","√7/3","7/3"]]],
+[[["4√12−6√48","8√3−24√3 = −16√3"],["3√2(4√3+6√2)","12√6 + 36"]],[["9√5·11√15","99√75 = 99·5√3 = 495√3"],["√24−√54+√96","2√6−3√6+4√6 = 3√6"]],[["بسّط 3√45+√20−√245","4√5","18√5","2√5"],["بسّط 3√5+6√5","9√5","9√10","18√5"]]]
+];
+X.forEach(function(x,k){D[k][0]=D[k][0].concat(x[0]);D[k][1]=D[k][1].concat(x[1]);D[k][2]=[D[k][2]].concat(x[2])});
+var nm='',R={n:0,ok:0},TP='',PR={},PX={},XA=null,TD=[];
+var EXL={1:[["نموذج اختبار 1 — مستوى أساسي"],["نموذج اختبار 2 — مستوى متوسط"],["نموذج اختبار 3 — مستوى متقدم"]]};EXL[2]=EXL[1];
+var LV=['أساسي','متوسط','متقدم'];
+var EXD={1:[
+[["ناتج (2x+3)+(x+5)","3x+8","2x+8","3x+15"],["ناتج (x+2)(x+3)","x²+5x+6","x²+6","x²+5x+5"],["حلّل x²+5x+6","(x+2)(x+3)","(x+1)(x+6)","(x−2)(x−3)"],["حل x²−4=0","x=2 أو x=−2","x=4","x=±16"],["ناتج (x+4)²","x²+8x+16","x²+16","x²+4x+16"]],
+[["ناتج (3x²−2x+1)−(x²+4x−5)","2x²−6x+6","2x²+2x−4","2x²−6x−4"],["ناتج (2x−3)(x+4)","2x²+5x−12","2x²−5x−12","2x²+11x−12"],["حلّل 2x²+7x+3","(2x+1)(x+3)","(2x+3)(x+1)","(2x−1)(x−3)"],["حل x²−5x−14=0","x=7 أو x=−2","x=−7 أو x=2","x=14 أو x=−1"],["حلّل 4x²−49","(2x−7)(2x+7)","(4x−7)(x+7)","(2x−7)²"]],
+[["ناتج (3x−2)(x²+x−4)","3x³+x²−14x+8","3x³+5x²−14x+8","3x³+x²−10x−8"],["حلّل 6x²−x−12","(3x+4)(2x−3)","(3x−4)(2x+3)","(6x+4)(x−3)"],["حل 2x²+5x−12=0","x=3/2 أو x=−4","x=−3/2 أو x=4","x=12 أو x=−1"],["حلّل 2x³−32x","2x(x−4)(x+4)","2x(x−4)²","2(x²−16x)"],["حل 9x²−12x+4=0","x=2/3","x=−2/3","x=2/3 أو x=−2/3"]]],
+2:[
+[["ناتج (3x²)(2x³)","6x⁵","5x⁵","6x⁶"],["ناتج x⁷ / x³","x⁴","x¹⁰","x²"],["قيمة 5⁰","1","0","5"],["قيمة 16^(1/2)","4","8","2"],["العدد 45,000 بالترميز العلمي","4.5×10⁴","45×10³","4.5×10³"]],
+[["ناتج (2x³y)³","8x⁹y³","6x⁹y³","8x⁶y³"],["بسّط 12a⁵b² / (4a²b)","3a³b","8a³b","3a⁷b"],["قيمة 8^(2/3)","4","16","2"],["ناتج (3×10⁴)(2×10⁻²)","6×10²","6×10⁶","5×10²"],["بسّط √48","4√3","6√2","16√3"]],
+[["بسّط (3a²b⁻¹)² / (a⁻³b²)","9a⁷/b⁴","9a/b⁴","3a⁷/b⁴"],["قيمة 27^(−2/3)","1/9","9","−9"],["ناتج (4.8×10⁻³) / (1.6×10⁵)","3×10⁻⁸","3×10⁻²","3×10⁸"],["بسّط 6 / (3−√3)","3+√3","3−√3","6+2√3"],["ناتج (√5+√3)(√5−√3)","2","8","2√5"]]]};
+var EXA={1:[
+[["ناتج (x+1)(x+4)","x²+5x+4","x²+4","x²+4x+5"],["ناتج (x−3)(x+3)","x²−9","x²+9","x²−6"],["ناتج (x−2)²","x²−4x+4","x²−4","x²+4x+4"],["حلّل 5x+10","5(x+2)","5(x+10)","10(x+5)"],["حلّل x²+7x+10","(x+2)(x+5)","(x+1)(x+10)","(x−2)(x−5)"],["حل x²−9=0","x=3 أو x=−3","x=9","x=9 أو x=−9"],["حل x(x−5)=0","x=0 أو x=5","x=5 فقط","x=0 أو x=−5"],["حلّل x²−x−6","(x−3)(x+2)","(x+3)(x−2)","(x−6)(x+1)"],["ناتج (4x²+3x)+(2x²−x)","6x²+2x","6x²+4x","8x²+2x"],["ناتج 3x(x+4)","3x²+12x","3x²+4","3x+12x"]],
+[["ناتج (2x+5)²","4x²+20x+25","4x²+25","2x²+20x+25"],["ناتج (3x−4)(3x+4)","9x²−16","9x²+16","9x²−8"],["ناتج (x+6)(x−4)","x²+2x−24","x²−2x−24","x²+10x−24"],["حلّل x²+2x−35","(x+7)(x−5)","(x−7)(x+5)","(x+35)(x−1)"],["حل x²+6x+8=0","x=−2 أو x=−4","x=2 أو x=4","x=−1 أو x=−8"],["حلّل 3x²+10x+8","(3x+4)(x+2)","(3x+2)(x+4)","(3x+8)(x+1)"],["حلّل 25x²−36","(5x−6)(5x+6)","(25x−6)(x+6)","(5x−6)²"],["حلّل 3x²−12","3(x−2)(x+2)","3(x−4)(x+4)","(3x−2)(x+2)"],["حل 4x²−25=0","x=5/2 أو x=−5/2","x=25/4","x=5 أو x=−5"],["حلّل x²−10x+25","(x−5)²","(x+5)²","(x−5)(x+5)"]],
+[["ناتج (2x−1)(x²−3x+5)","2x³−7x²+13x−5","2x³−5x²+13x−5","2x³−7x²+7x−5"],["حلّل 10x²+13x−3","(5x−1)(2x+3)","(5x+1)(2x−3)","(10x−1)(x+3)"],["حل 3x²−7x−6=0","x=3 أو x=−2/3","x=−3 أو x=2/3","x=6 أو x=−1/3"],["حلّل 16x⁴−81","(4x²+9)(2x−3)(2x+3)","(4x²−9)²","(2x−3)⁴"],["حل x³=16x","x=0 أو x=4 أو x=−4","x=4 فقط","x=0 أو x=16"],["ناتج (x+2)(x−3)(x+1)","x³−7x−6","x³−6","x³−2x²−7x−6"],["حلّل ab+3a−2b−6","(a−2)(b+3)","(a+2)(b−3)","(a−3)(b+2)"],["مستطيل طوله (x+5) وعرضه (x−2)، مساحته","x²+3x−10","x²−3x−10","x²+7x−10"],["حل (x−4)²=25","x=9 أو x=−1","x=29 أو x=−21","x=5 أو x=−5"],["حل 12x²−x−6=0","x=3/4 أو x=−2/3","x=−3/4 أو x=2/3","x=3/2 أو x=−4/3"]]],
+2:[
+[["ناتج (x²)(x⁴)","x⁶","x⁸","x²"],["ناتج (x³)²","x⁶","x⁵","x⁹"],["قيمة 2⁻¹","1/2","−2","1/4"],["قيمة 9^(1/2)","3","4.5","81"],["قيمة √36","6","18","36"],["ناتج √2·√3","√6","6","√5"],["بسّط 3√2+5√2","8√2","8√4","15√2"],["العدد 0.0005 بالترميز العلمي","5×10⁻⁴","5×10⁻³","5×10⁴"],["ناتج x⁸ / x²","x⁶","x⁴","x¹⁰"],["قيمة 10⁰+2⁰","2","0","12"]],
+[["ناتج (−2x²y)²","4x⁴y²","−4x⁴y²","4x²y²"],["بسّط x⁵y³ / (x²y)","x³y²","x⁷y⁴","x³y³"],["قيمة 4^(3/2)","8","6","64"],["قيمة 2⁻³","1/8","−8","−6"],["حل 3^x=81","x=4","x=27","x=3"],["بسّط √72","6√2","36√2","9√2"],["ناتج √7·√14","7√2","98","2√7"],["بسّط 5√3−2√3+√3","4√3","3√3","8√3"],["ناتج (6×10³)(4×10⁵) بالترميز العلمي","2.4×10⁹","24×10⁸","2.4×10⁸"],["ناتج (x²)³·x","x⁷","x⁶","x⁹"]],
+[["بسّط (2x³y⁻²)³","8x⁹/y⁶","6x⁹/y⁶","8x⁶/y⁵"],["بسّط (x⁻²y³) / (x³y⁻¹)","y⁴/x⁵","y²/x","x⁵/y⁴"],["قيمة 16^(3/4)","8","12","64"],["حل 25^x = 5^(x+3)","x=3","x=1","x=−3"],["حل 2^(x+1)=32","x=4","x=5","x=3"],["بسّط √(18x³) حيث x≥0","3x√(2x)","9x√(2x)","3x²√2"],["بسّط √(5/12)","√15/6","√5/6","√15/12"],["بسّط 2/(√5−1)","(√5+1)/2","√5−1","(√5+1)/4"],["ناتج (2+√3)²","7+4√3","7","7+2√3"],["ناتج (3.6×10⁻⁴)/(9×10⁻⁸)","4×10³","4×10⁻¹²","4×10⁻³"]]]};
+[1,2].forEach(function(u){[0,1,2].forEach(function(k){EXD[u][k]=EXD[u][k].concat(EXA[u][k])})});
+try{nm=localStorage.getItem('stu')||'';TP=sessionStorage.getItem('tp')||''}catch(e){}
+function rd(){return Math.random()-.5}
+function mx(s){return String(s).replace(/[^\u0600-\u06FF]+/g,function(r){return /[A-Za-z0-9]/.test(r)?'<bdi dir="ltr" style="unicode-bidi:isolate">'+r+'</bdi>':r})}
+function xl(u,k){return 'الوحدة '+u+' · نموذج '+k+' ('+LV[k-1]+')'}
+function UL(u){return u==1?U1:U2}
+function unitDone(u){return UL(u).every(function(l){return PR[l[0]]&&PR[l[0]].done})}
+function refreshCards(){document.querySelectorAll('.card').forEach(function(c){var u=+c.dataset.u,i=+c.dataset.i,ex=+c.dataset.ex,b=c.querySelector('.bd'),dn,lk=false;
+if(ex){dn=PX[xl(u,ex)]&&PX[xl(u,ex)].done;lk=!unitDone(u)&&!dn}else dn=PR[UL(u)[i][0]]&&PR[UL(u)[i][0]].done;
+c.classList.toggle('lk',lk);c.classList.toggle('dn',!!dn);b.textContent=dn?'✓':lk?'🔒':''})}
+function act(u,i,ex){if(!nm){askName();return}if(ex)openX(u,ex);else openL(u,i)}
+function post(p,o){o=o||{};o.pass=TP;return fetch('/api/'+p,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(o)})}
+function lg(o){if(!nm)return Promise.resolve(false);o.name=nm;return post('log',o).then(function(r){if(r.status==403){nm='';try{localStorage.removeItem('stu')}catch(e){}askName();document.getElementById('ne').textContent='اسمك غير مسجّل لدى المعلم.';return false}return r.ok}).catch(function(){return false})}
+function askName(){document.getElementById('nm').hidden=!!nm;document.getElementById('hi').textContent=nm?'الطالب: '+nm:'';document.getElementById('n2').hidden=!!nm}
+function prog(j){PR=j.lessons||{};PX=j.exams||{};refreshCards()}
+function saveName(){var v=document.getElementById('ni').value.trim(),e=document.getElementById('ne');if(!v)return;post('login',{name:v}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j){e.textContent='هذا الاسم غير مسجّل لدى المعلم. اكتب اسمك كاملاً كما أضافه المعلم.';return}nm=j.name;try{localStorage.setItem('stu',nm)}catch(x){}e.textContent='';askName();prog(j);lg({type:'login'})}).catch(function(){e.textContent='تعذّر الاتصال، حاول مرة أخرى.'})}
+askName();if(nm){post('login',{name:nm}).then(function(r){return r.ok?r.json():null}).then(function(j){if(j){prog(j);lg({type:'login'})}else{nm='';askName()}}).catch(function(){})}
+function go(k){if(k==1&&nm)return;document.body.classList.toggle('tm',k==1);document.getElementById('n1').classList.toggle('on',k==0);document.getElementById('n2').classList.toggle('on',k==1);if(k==1){document.getElementById('nm').hidden=true;teach()}else askName()}
+setInterval(function(){if(document.body.classList.contains('tm')&&TP)teach(1)},10000);
+function login(){TP=document.getElementById('tpw').value.trim();try{sessionStorage.setItem('tp',TP)}catch(e){}teach()}
+/* ===== الاختبارات ===== */
+function openX(u,k){var t=xl(u,k),x=PX[t];if(!unitDone(u)&&!(x&&x.done)){alert('يجب إكمال جميع دروس الوحدة '+u+' أولاً ('+UL(u).filter(function(l){return PR[l[0]]&&PR[l[0]].done}).length+'/'+UL(u).length+')');return}
+m.classList.add('show');document.body.style.overflow='hidden';m.scrollTop=0;
+var bar='<div class="bar"><button class="x" onclick="leaveX()" aria-label="إغلاق">✕</button><div><b>'+EXL[u][k-1][0]+'</b><small>الوحدة '+u+'</small></div></div><div class="body" style="padding-top:14px">';
+if(x&&x.done){m.innerHTML=bar+'<div class="ex"><h3>تم إنجاز هذا الاختبار</h3><p style="font-size:20px;font-weight:900">نتيجتك: '+x.score+' / '+x.total+'</p></div></div>';return}
+m.innerHTML=bar+'<div class="ex"><h3>تعليمات الاختبار</h3><p>• عدد الأسئلة 15 بدون وقت محدد، ولا يمكن إعادة الاختبار.<br>• يُمنع منعاً باتاً استخدام أدوات الذكاء الاصطناعي أو أي مساعدة خارجية.<br>• تُسجَّل أي مغادرة للصفحة وتُبلَّغ للمعلم، وعند 3 مغادرات يُنهى الاختبار تلقائياً.<br>• تُرسل النتيجة إلى المعلم عند الانتهاء.</p><button class="tbn" onclick="startX('+u+','+k+')">ابدأ الاختبار</button></div></div>'}
+function startX(u,k){var t=xl(u,k);post('log',{name:nm,type:'exstart',ex:true,lt:t}).then(function(r){if(r.status==409){alert('تم إنجاز هذا الاختبار مسبقاً.');PX[t]=PX[t]||{done:true,score:0,total:15};refreshCards();closeL();return}if(!r.ok){alert('تعذّر الاتصال بالخادم، حاول مرة أخرى.');return}
+XA={u:u,k:k,t:t,a:[],v:0,lv:0,qs:EXD[u][k-1].map(function(q){return{q:q[0],o:q.slice(1).map(function(x,i){return[x,i==0]}).sort(rd)}})};paintX()}).catch(function(){alert('تعذّر الاتصال بالخادم.')})}
+function paintX(){var h='<div class="bar"><button class="x" onclick="leaveX()" aria-label="خروج">✕</button><div><b>'+EXL[XA.u][XA.k-1][0]+'</b><small>15 سؤالاً — بدون وقت محدد</small></div></div><div id="wn" class="wn"></div><div class="body" style="padding-top:12px">';
+XA.qs.forEach(function(q,n){h+='<div class="ex"><h3>سؤال '+(n+1)+'</h3><div dir="rtl" style="font-size:18px;margin-bottom:6px">'+mx(q.q)+'</div>';q.o.forEach(function(o){h+='<button class="opt" onclick="selX(this,'+n+','+(o[1]?1:0)+')"><span class="m" style="text-align:center">'+mx(o[0])+'</span></button>'});h+='</div>'});
+m.innerHTML=h+'<button class="tbn" onclick="finishX(false)">إنهاء الاختبار وإرسال النتيجة</button></div>';m.scrollTop=0;
+}
+function selX(b,n,ok){b.parentNode.querySelectorAll('.opt').forEach(function(x){x.classList.remove('sel')});b.classList.add('sel');XA.a[n]=ok==1}
+function viol(){if(!XA||Date.now()-XA.lv<1500)return;XA.lv=Date.now();XA.v++;var w=document.getElementById('wn');if(w)w.textContent='⚠️ تحذير: مغادرة الصفحة مسجّلة ('+XA.v+'/3) وسيتم إبلاغ المعلم.';if(XA.v>=3)finishX(true)}
+document.addEventListener('visibilitychange',function(){if(document.hidden)viol()});window.addEventListener('blur',viol);
+function leaveX(){if(XA){if(confirm('سيتم إنهاء الاختبار وإرسال نتيجتك الآن. هل تريد المتابعة؟'))finishX(false)}else closeL()}
+function finishX(auto){if(!XA)return;var X=XA;XA=null;var s=X.a.filter(Boolean).length,t=X.qs.length;
+m.innerHTML='<div class="bar"><button class="x" onclick="closeL()">✕</button><b>انتهى الاختبار</b></div><div class="body" style="padding-top:14px"><div class="ex"><h3>'+(auto?'تم إنهاء الاختبار تلقائياً':'تم إنهاء الاختبار')+'</h3><p style="font-size:20px;font-weight:900">نتيجتك: '+s+' / '+t+'</p><p class="fb" id="sx">جارٍ إرسال النتيجة للمعلم…</p></div></div>';
+PX[X.t]={done:true,score:s,total:t,v:X.v};refreshCards();
+post('log',{name:nm,type:'result',ex:true,lt:X.t,score:s,total:t,v:X.v}).then(function(r){document.getElementById('sx').textContent=r.ok?'تم إرسال نتيجتك إلى المعلم ✓':'تعذّر إرسال النتيجة، أبلغ معلمك.'}).catch(function(){document.getElementById('sx').textContent='تعذّر إرسال النتيجة، أبلغ معلمك.'})}
+['copy','cut','paste','contextmenu','dragstart','selectstart'].forEach(function(ev){document.addEventListener(ev,function(e){if(m.contains(e.target)||e.target===m)e.preventDefault()})});
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&'cxvpsua'.indexOf(e.key.toLowerCase())>-1&&m.classList.contains('show'))e.preventDefault()});
+/* ===== صفحة المعلم ===== */
+function teach(auto){var p=document.getElementById('tp');
+if(!TP){p.innerHTML='<div class="ex" style="max-width:360px;margin:30px auto;text-align:center"><h3>🔒 دخول المعلم</h3><input id="tpw" type="password" placeholder="كلمة المرور" style="width:100%;padding:10px;margin:8px 0;border:1px solid var(--gold);border-radius:10px;font-size:16px;background:var(--bg);color:var(--ink)"><button class="tbn" onclick="login()">دخول</button></div>';return}
+if(!document.getElementById('rs'))p.innerHTML='<h2 style="margin:0 0 4px">تقرير المنصة — مدرسة راشد بن سعيد الحلقة 3 — الأستاذ إسماعيل</h2><div class="noprint"><div class="ex"><h3>➕ إضافة الطلاب</h3><div style="display:flex;gap:8px"><input id="an" placeholder="اسم الطالب الكامل" style="flex:1;padding:10px;border:1px solid var(--gold);border-radius:10px;font-size:16px;background:var(--bg);color:var(--ink)"><button class="tbn" style="margin:0" onclick="addNames([document.getElementById(\'an\').value])">إضافة</button></div><p style="margin:12px 0 4px">أو استيراد من ملف Excel (الأسماء في العمود الأول):</p><input type="file" id="xf" accept=".xlsx,.xls,.csv" onchange="imp(this)"><p id="am" class="fb"></p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="tbn" style="margin:0" onclick="exX()">📥 تصدير Excel</button><button class="tbn" style="margin:0" onclick="window.print()">🖨️ تصدير PDF</button></div></div><h3 class="th">👥 جدول الطلاب</h3><div id="rs" class="sc"></div><h3 class="th">📘 نتائج الدروس (الأرقام = الوحدة-الدرس)</h3><div id="rl" class="sc"></div><h3 class="th">📝 نتائج الاختبارات (⚠ = مرات مغادرة الصفحة)</h3><div id="rx" class="sc"></div><h3 class="th noprint">آخر النشاطات</h3><div id="ev" class="noprint"></div>';
+post('report').then(function(r){if(r.status==401){TP='';try{sessionStorage.removeItem('tp')}catch(e){}teach();return null}if(!r.ok){document.getElementById('rs').innerHTML='<p class="fb" style="color:#c0392b">تعذّر قراءة البيانات من الخادم ('+r.status+'). تأكد من نشر مجلد netlify/functions وملف package.json ثم أعد النشر.</p>';return null}return r.json()}).then(function(a){if(a)drawT(a)}).catch(function(){})}
+function addNames(n){var am=document.getElementById('am');n=n.filter(function(x){return x&&String(x).trim()});if(!n.length){am.textContent='اكتب اسماً أولاً.';return}am.textContent='جارٍ الإضافة…';
+post('add',{names:n}).then(function(r){if(r.status==401){am.textContent='كلمة مرور المعلم غير صحيحة (راجع متغير TEACHER_PASSWORD في Netlify).';return null}if(!r.ok){am.textContent='خطأ في الخادم ('+r.status+'): تأكد من نشر مجلد netlify/functions وملف package.json عبر GitHub ثم أعد النشر.';return null}return r.json()}).then(function(j){if(!j)return;am.textContent='تمت إضافة '+j.added+' طالب'+(j.skipped?' (تم تخطي '+j.skipped+' مسجّل مسبقاً)':'');document.getElementById('an').value='';teach()}).catch(function(){am.textContent='تعذّر الاتصال بالخادم أو أن الدوال (Functions) غير منشورة.'})}
+function imp(i){var f=i.files[0];if(!f)return;if(typeof XLSX=='undefined'){document.getElementById('am').textContent='تعذّر تحميل مكتبة Excel، تأكد من الاتصال بالإنترنت.';return}
+f.arrayBuffer().then(function(b){var w=XLSX.read(b,{type:'array'}),r=XLSX.utils.sheet_to_json(w.Sheets[w.SheetNames[0]],{header:1}),n=r.map(function(x){return String(x[0]==null?'':x[0]).trim()}).filter(Boolean);
+if(n.length&&/^(الاسم|اسم الطالب|اسم|الطالب|name|student)/i.test(n[0]))n.shift();addNames(n);i.value=''})}
+function del(n){if(confirm('حذف الطالب «'+n+'» ونتائجه؟'))post('del',{name:n}).then(function(){teach()})}
+function tm(t){if(!t)return'—';var d=new Date(t);return d.toLocaleDateString('ar-AE',{day:'numeric',month:'numeric'})+' '+d.toLocaleTimeString('ar-AE',{hour:'2-digit',minute:'2-digit'})}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function LT(){return U1.concat(U2).map(function(l){return l[0]})}
+function XT(){var a=[];[1,2].forEach(function(u){[1,2,3].forEach(function(k){a.push(xl(u,k))})});return a}
+function lvl(s){var sc=0,t=0;[s.lessons||{},s.exams||{}].forEach(function(o){Object.keys(o).forEach(function(k){if(o[k].done){sc+=o[k].score;t+=o[k].total}})});if(!t)return['—','—'];var p=Math.round(sc/t*100);return[p+'%',p>=85?'متميز':p>=70?'جيد':p>=50?'متوسط':'يحتاج دعم']}
+function ndone(s){return Object.keys(s.lessons||{}).filter(function(k){return s.lessons[k].done}).length}
+function drawT(a){a.sort(function(x,y){return x.name.localeCompare(y.name,'ar')});TD=a;var ev=[],L=LT(),X=XT();
+var h='<table class="tt"><tr><th>#</th><th>الطالب</th><th>مرات الدخول</th><th>الدروس المنجزة</th><th>المتوسط</th><th>المستوى</th><th>آخر دخول</th><th class="noprint"></th></tr>',h2='<table class="tt"><tr><th>الطالب</th>'+L.map(function(_,i){return'<th>'+(i<9?'1-'+(i+1):'2-'+(i-8))+'</th>'}).join('')+'</tr>',h3='<table class="tt"><tr><th>الطالب</th>'+X.map(function(k){return'<th>'+k.replace('الوحدة ','و').replace(' · نموذج ',' ن').replace(/[()]/g,'')+'</th>'}).join('')+'</tr>';
+a.forEach(function(s,i){s.log.forEach(function(e){ev.push([e,s.name])});var lv=lvl(s);
+h+='<tr><td>'+(i+1)+'</td><td>'+esc(s.name)+'</td><td>'+(s.logins||0)+'</td><td>'+ndone(s)+'/15</td><td>'+lv[0]+'</td><td>'+lv[1]+'</td><td>'+tm(s.last)+'</td><td class="noprint"><button class="x" style="width:28px;height:28px;font-size:13px" onclick="del(this.dataset.n)" data-n="'+esc(s.name)+'">✕</button></td></tr>';
+h2+='<tr><td>'+esc(s.name)+'</td>'+L.map(function(k){var l=s.lessons[k];return'<td>'+(l&&l.done?l.score+'/'+l.total:'—')+'</td>'}).join('')+'</tr>';
+h3+='<tr><td>'+esc(s.name)+'</td>'+X.map(function(k){var e=(s.exams||{})[k];return'<td>'+(e&&e.done?e.score+'/'+e.total+(e.v?' ⚠'+e.v:''):'—')+'</td>'}).join('')+'</tr>'});
+var none='<p>لم تتم إضافة طلاب بعد.</p>';
+document.getElementById('rs').innerHTML=a.length?h+'</table>':none;document.getElementById('rl').innerHTML=a.length?h2+'</table>':none;document.getElementById('rx').innerHTML=a.length?h3+'</table>':none;
+ev.sort(function(x,y){return y[0].ts-x[0].ts});
+document.getElementById('ev').innerHTML=ev.slice(0,30).map(function(z){var e=z[0];return'<div class="ev">'+tm(e.ts)+' — <b>'+esc(z[1])+'</b> '+(e.t=='login'?'دخل الموقع':e.t=='enter'?'فتح درس '+esc(e.lt):e.t=='result'?'أنهى '+esc(e.lt)+' ('+e.score+'/'+e.total+')':e.t=='exstart'?'بدأ '+esc(e.lt):'أجاب عن سؤال')+'</div>'}).join('')}
+function exX(){if(typeof XLSX=='undefined'){alert('مكتبة Excel غير محمّلة، تأكد من الاتصال.');return}var L=LT(),X=XT(),w=XLSX.utils.book_new(),r1=[['#','الطالب','مرات الدخول','الدروس المنجزة','المتوسط','المستوى','آخر دخول']],r2=[['الطالب'].concat(L)],r3=[['الطالب'].concat(X,['عدد المخالفات'])];
+TD.forEach(function(s,i){var lv=lvl(s),v=0;r1.push([i+1,s.name,s.logins||0,ndone(s)+'/15',lv[0],lv[1],tm(s.last)]);r2.push([s.name].concat(L.map(function(k){var l=s.lessons[k];return l&&l.done?l.score+'/'+l.total:''})));r3.push([s.name].concat(X.map(function(k){var e=(s.exams||{})[k];if(e&&e.v)v+=e.v;return e&&e.done?e.score+'/'+e.total:''}),[v]))});
+[['الطلاب',r1],['نتائج الدروس',r2],['الاختبارات',r3]].forEach(function(z){XLSX.utils.book_append_sheet(w,XLSX.utils.aoa_to_sheet(z[1]),z[0])});w.Workbook={Views:[{RTL:true}]};XLSX.writeFile(w,'نتائج-الطلاب.xlsx')}
+async function cert(){try{await document.fonts.load('700 40px Cairo')}catch(e){}
+var c=document.createElement('canvas');c.width=1600;c.height=1130;var x=c.getContext('2d');x.direction='rtl';x.textAlign='center';var F='Cairo,Tahoma,Arial,sans-serif';
+x.fillStyle='#fffaf2';x.fillRect(0,0,1600,1130);x.strokeStyle='#6d1a2e';x.lineWidth=18;x.strokeRect(40,40,1520,1050);x.strokeStyle='#b8893a';x.lineWidth=5;x.strokeRect(75,75,1450,980);
+function t(s,px,y,sz,col,w){x.fillStyle=col;x.font=(w||700)+' '+sz+'px '+F;x.fillText(s,px,y)}
+t('بالميثاق نبلغ الآفاق',800,170,46,'#b8893a',900);t('شهادة تقدير',800,300,120,'#6d1a2e',900);t('تُمنح هذه الشهادة للطالب',800,400,44,'#3a0f1c');t(nm,800,520,100,'#6d1a2e',900);
+x.fillStyle='#b8893a';x.fillRect(450,550,700,5);
+t('تقديراً لإتمامه درس «'+cur.t+'»',800,650,46,'#3a0f1c');t('بنتيجة '+R.ok+' من '+R.n,800,730,56,'#b8893a',900);t('مادة الرياضيات — الصف العاشر عام',800,810,40,'#3a0f1c');
+t('مدرسة راشد بن سعيد ح3 — '+new Date().toLocaleDateString('ar-AE'),800,880,34,'#6b5560');
+t('معلم المادة',1230,980,30,'#6b5560');t('الأستاذ إسماعيل الشحات',1230,1025,36,'#6d1a2e');t('مدير المدرسة',370,980,30,'#6b5560');t('الأستاذ عبدالله الهنجري',370,1025,36,'#6d1a2e');
+c.toBlob(function(b){var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='شهادة-'+nm+'.png';document.body.appendChild(a);a.click();a.remove()})}
+var m=document.getElementById('ov'),cur,tab=0;
+function openL(u,i){var L=(u==1?U1:U2)[i];cur={d:D[u==1?i:9+i],t:L[0],en:L[1]};tab=0;lg({type:'enter',lt:L[0]});m.classList.add('show');document.body.style.overflow='hidden';draw();m.scrollTop=0}
+function closeL(){m.classList.remove('show');document.body.style.overflow=''}
+function draw(){var d=cur.d,h='<div class="bar"><button class="x" onclick="closeL()" aria-label="إغلاق">✕</button><div><b>'+cur.t+'</b><small dir="ltr">'+cur.en+'</small></div></div><div class="tabs">';
+['أمثلة محلولة','تمارين','اختبار'].forEach(function(n,k){h+='<button class="'+(k==tab?'on':'')+'" onclick="tab='+k+';draw()">'+n+'</button>'});
+h+='</div><div class="body">';
+if(tab==0)d[0].forEach(function(x,k){h+='<div class="ex"><h3>مثال '+(k+1)+'</h3><span class="m">'+x[0]+'</span><h4>الحل</h4><span class="m sol">'+x[1]+'</span></div>'});
+if(tab==1)d[1].forEach(function(x,k){h+='<details class="ex"><summary>تمرين '+(k+1)+' (اضغط لإظهار الحل)<span class="m">'+x[0]+'</span></summary><span class="m sol">'+x[1]+'</span></details>'});
+if(tab==2)R={n:0,ok:0};
+if(tab==2)d[2].forEach(function(q,n){var o=q.slice(1).map(function(t,k){return[t,k==0]}).sort(function(){return Math.random()-.5});
+h+='<div class="ex"><h3>سؤال '+(n+1)+' — اختر الإجابة الصحيحة</h3><div dir="rtl" style="font-size:18px;margin-bottom:6px">'+mx(q[0])+'</div>';
+o.forEach(function(x){h+='<button class="opt" data-ok="'+(x[1]?1:0)+'" onclick="pick(this)"><span class="m" style="text-align:center">'+mx(x[0])+'</span></button>'});
+h+='<p class="fb"></p></div>'});
+m.innerHTML=h+'</div>'}
+function pick(b){var p=b.parentNode,ok=b.dataset.ok==1;p.querySelectorAll('.opt').forEach(function(x){x.disabled=true;if(x.dataset.ok==1)x.classList.add('ok')});if(!ok)b.classList.add('bad');p.querySelector('.fb').textContent=ok?'إجابة صحيحة، أحسنت!':'إجابة غير صحيحة، الصحيحة باللون الأخضر.';
+R.n++;if(ok)R.ok++;lg({type:'ans',ok:ok,lt:cur.t});
+if(R.n==cur.d[2].length){var box=document.createElement('div');box.className='ex';box.innerHTML='<h3>🎉 أنهيت الدرس!</h3><p style="font-size:18px;font-weight:700">نتيجتك: '+R.ok+' من '+R.n+'</p><button class="tbn" onclick="cert()">🏅 تحميل شهادة التقدير</button><p class="fb" id="sent">جارٍ إرسال النتيجة للمعلم…</p>';m.querySelector('.body').appendChild(box);box.scrollIntoView({behavior:'smooth'});
+lg({type:'result',lt:cur.t,score:R.ok,total:R.n}).then(function(k){if(k){PR[cur.t]={done:true,score:R.ok,total:R.n};refreshCards()}document.getElementById('sent').textContent=k?'تم إرسال نتيجتك إلى المعلم ✓':'تعذّر إرسال النتيجة، تحقق من الاتصال.'})}}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeL()});
+
+var U1=[["جمع كثيرات الحدود وطرحها","Adding and Subtracting Polynomials"],["ضرب كثيرة حدود في أحادية حد","Multiplying a Polynomial by a Monomial"],["ضرب كثيرات الحدود","Multiplying Polynomials"],["نواتج الضرب الخاصة","Special Products"],["استخدام خاصية التوزيع","Using the Distributive Property"],["حل x² + bx + c = 0","Solving x²+bx+c=0"],["حل ax² + bx + c = 0","Solving ax²+bx+c=0"],["الفرق بين مربعين","Differences of Squares"],["المربعات الكاملة","Perfect Squares"]];
+var U2=[["خواص ضرب الأسس","Multiplication Properties of Exponents"],["خواص قسمة الأسس","Division Properties of Exponents"],["الأسس النسبية","Rational Exponents"],["الترميز العلمي","Scientific Notation"],["تبسيط التعابير الجذرية","Simplifying Radical Expressions"],["العمليات على التعابير الجذرية","Operations with Radical Expressions"]];
+function build(id,list,u){
+ var g=document.getElementById(id);
+ list.concat(EXL[u]).forEach(function(l,i){var ex=i>=list.length?i-list.length+1:0;
+  var c=document.createElement('div');
+  c.className='card rest'+(ex?' ex'+ex:'');c.dataset.u=u;c.dataset.i=i;c.dataset.ex=ex;c.tabIndex=0;c.setAttribute('role','button');
+  c.setAttribute('aria-label','الدرس '+(i+1)+': '+l[0]);
+  c.innerHTML='<div class="tilt"><div class="flip"><div class="face front"><div class="n">'+(ex?'★':i+1)+'</div><div class="t">'+l[0]+'</div><div class="glare"></div><span class="bd"></span></div><div class="face back"><b>'+l[1]+'</b><small>Unit '+u+' · Lesson '+(i+1)+'</small></div></div></div>';
+  g.appendChild(c);
+  c.addEventListener('pointermove',function(e){
+   var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+   c.classList.remove('rest');
+   c.style.setProperty('--rx',((.5-y)*22)+'deg');
+   c.style.setProperty('--ry',((x-.5)*26)+'deg');
+   c.style.setProperty('--gx',(x*100)+'%');c.style.setProperty('--gy',(y*100)+'%');c.style.setProperty('--go',1);
+  });
+  function reset(){c.classList.add('rest');c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg');c.style.setProperty('--go',0)}
+  c.addEventListener('pointerleave',reset);c.addEventListener('pointerup',function(e){if(e.pointerType!=='mouse')setTimeout(reset,250)});
+  c.addEventListener('click',function(){act(u,i,ex)});
+  c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();act(u,i,ex)}});
+ });
+}
+build('u1',U1,1);build('u2',U2,2);refreshCards();
+</script>
+</body>
+</html>
